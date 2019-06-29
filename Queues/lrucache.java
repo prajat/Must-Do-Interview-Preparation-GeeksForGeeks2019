@@ -40,25 +40,28 @@ public class lrucache {
 
 
         if (map.containsKey(x)) {
+
             map.put(x, y);
             queue.remove(x);
             queue.add(x);
-        }
-        if (!map.containsKey(x)) {
-            if (queue.size() == capacity) {
-                int key = queue.poll();
-                map.remove(key);
+
+        } else {
+
+            if (map.size() == capacity) {
+
+                int value = queue.poll();
+                map.remove(value);
                 queue.add(x);
                 map.put(x, y);
-                
-            }
-           
 
-        }
-        else{
-            map.put(x, y);
-            queue.add(x);
-        }
+            } else {
+
+                map.put(x, y);
+                queue.add(x);
+
+            }
+
+        }\
        
         
 
